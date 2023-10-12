@@ -1,0 +1,25 @@
+---
+import { newtClient } from "../../lib/newt";
+import type { Article } from "../../lib/newt";
+
+export const getStaticPaths = async () => {
+  const { items: articles } = await newtClient.getContents<Article>({
+    appUid: "aglog",
+    modelUid: "article",
+    query: {
+      select: ["title", "slug", "body", "coverImage"],
+    },
+  });
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+};
+
+const { article } = Astro.props;
+---
+
+<main>
+  <h2>{article.title}</h2>
+  <article set:html={article.body} />
+</main>
