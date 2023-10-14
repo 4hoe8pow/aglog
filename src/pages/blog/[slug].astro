@@ -1,25 +1,38 @@
 ---
-import { newtClient } from "../../lib/newt";
-import type { Article } from "../../lib/newt";
+import BaseHead from '@components/BaseHead.astro'
+import Footer from '@components/Footer.astro'
+import Header from '@components/Header.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from 'src/consts'
+import { newtClient, type NewtArticle } from '../../lib/newt'
 
 export const getStaticPaths = async () => {
-  const { items: articles } = await newtClient.getContents<Article>({
-    appUid: "aglog",
-    modelUid: "article",
-    query: {
-      select: ["title", "slug", "body", "coverImage"],
-    },
-  });
-  return articles.map((article) => ({
-    params: { slug: article.slug },
-    props: { article },
-  }));
-};
+	const { items: articles } = await newtClient.getContents<NewtArticle>({
+		appUid: 'aglog',
+		modelUid: 'article',
+		query: {
+			select: ['title', 'slug', 'body', 'coverImage']
+		}
+	})
+	return articles.map((article) => ({
+		params: { slug: article.slug },
+		props: { article }
+	}))
+}
 
-const { article } = Astro.props;
+const { article } = Astro.props
 ---
 
-<main>
-  <h2>{article.title}</h2>
-  <article set:html={article.body} />
-</main>
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h2>{article.title}</h2>
+			<article set:html={article.body} />
+		</main>
+		<Footer />
+	</body>
+</html>

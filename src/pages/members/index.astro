@@ -1,0 +1,53 @@
+---
+import BaseHead from '@components/BaseHead.astro'
+import Footer from '@components/Footer.astro'
+import Header from '@components/Header.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from 'src/consts'
+import { newtClient, type NewtPlayer } from 'src/lib/newt'
+
+const { items: authors } = await newtClient.getContents<NewtPlayer>({
+	appUid: 'aglog',
+	modelUid: 'player',
+	query: {
+		select: ['fullName', 'uniformNumber', 'biography', 'profileImage']
+	}
+})
+// 背番号順にソート
+authors.sort((first, second) => parseInt(first.uniformNumber, 10) - parseInt(second.uniformNumber, 10))
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main class="max-w-8xl mx-auto grid gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-2">
+			<div class="max-w-2xl">
+				<h2 class="text-gray-900 text-3xl font-bold tracking-tight sm:text-4xl">AGNI KABADDISTS</h2>
+				<p class="text-gray-600 mt-6 text-lg leading-8">
+					カバディは道具を必要とせず、体のみで闘うシンプルなコンタクトスポーツです。広島阿國の練習は、一般体験者を随時受け付けています。「メンバーとして加入したい」等ではなく、一度やってみたいという気持ちがもしある方はご連絡ください。心よりお持ちしております。
+				</p>
+			</div>
+			<section>
+				<ul role="list" class="grid gap-x-12 gap-y-12 sm:grid-cols-3 sm:gap-y-20 xl:col-span-2">
+					{
+						authors.map((player) => (
+							<li>
+								<div class="flex items-center gap-x-4">
+									<img class="h-16 w-16 rounded-full" src={player.profileImage.src} alt={player.fullName} />
+									<div>
+										<h3 class="text-gray-900 text-base font-semibold leading-7 tracking-tight">{player.fullName}</h3>
+										<p class="text-indigo-600 text-sm font-semibold leading-6">#{player.uniformNumber}</p>
+									</div>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
