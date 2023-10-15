@@ -4,12 +4,13 @@ import Footer from '../../components/Footer.astro'
 import Header from '../../components/Header.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts'
 import { newtClient, type NewtArticle } from '../../lib/newt'
+import spacetime from 'spacetime'
 
 const { items: articles } = await newtClient.getContents<NewtArticle>({
 	appUid: 'aglog',
 	modelUid: 'article',
 	query: {
-		select: ['title', 'slug', 'body', 'coverImage']
+		select: ['title', 'slug', 'body', 'coverImage', '_sys']
 	}
 })
 ---
@@ -21,20 +22,25 @@ const { items: articles } = await newtClient.getContents<NewtArticle>({
 	</head>
 	<body>
 		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						articles.map((post) => (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
+		<main class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+			<section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				{
+					articles.map((post) => (
+						<div class="border-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] group flex h-full flex-col rounded-xl border bg-air shadow-sm">
+							<a href={`/blog/${post.slug}/`}>
+								<div class="bg-blue-600 flex h-52 flex-col items-center justify-center overflow-hidden rounded-t-xl">
 									<img width={720} height={360} src={post.coverImage.src} alt="" />
-									<h4 class="title">{post.title}</h4>
-								</a>
-							</li>
-						))
-					}
-				</ul>
+								</div>
+								<div class="p-4 md:p-6">
+									<span class="text-blue-600 dark:text-blue-500 mb-1 block text-xs font-semibold uppercase">
+										{spacetime(post._sys.createdAt).format('iso-short')}
+									</span>
+									<h3 class="text-gray-800 dark:text-gray-300 dark:hover:text-white text-xl font-semibold">{post.title}</h3>
+								</div>
+							</a>
+						</div>
+					))
+				}
 			</section>
 		</main>
 		<Footer />

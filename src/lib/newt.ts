@@ -7,6 +7,10 @@ export const newtClient = createClient({
 })
 
 export interface NewtArticle {
+	_sys: {
+		createdAt: Date
+		updatedAt: Date
+	}
 	title: string
 	slug: string
 	body: string

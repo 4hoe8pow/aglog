@@ -20,6 +20,7 @@
 		"astro": "^3.3.0",
 		"newt-client-js": "^3.2.7",
 		"prettier-plugin-tailwindcss": "^0.5.6",
+		"spacetime": "^7.4.7",
 		"tailwindcss": "^3.3.3"
 	},
 	"devDependencies": {

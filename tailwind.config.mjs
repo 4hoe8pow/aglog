@@ -16,8 +16,6 @@ export default {
 			khaki: '#c3b296',
 			white: '#f6f5f7',
 			blue: '#001f3f',
-			'gray-dark': '#273444',
-			'gray-light': '#d3dce6'
 		},
 		fontFamily: {
 			'zen-antique':['Zen Antique'],
