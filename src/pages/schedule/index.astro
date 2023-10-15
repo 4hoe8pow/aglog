@@ -8,7 +8,7 @@ const { items: schedule } = await newtClient.getContents<NewtWorkout>({
 	appUid: 'aglog',
 	modelUid: 'workout',
 	query: {
-		select: ['title', 'date', 'slug']
+		select: ['title', 'date', 'slug', 'field']
 	}
 })
 ---
@@ -31,7 +31,6 @@ const { items: schedule } = await newtClient.getContents<NewtWorkout>({
 							<div>
 								<span>{workout.date}</span>
 								<span>{workout.title}</span>
-								<span>{workout.field}</span>
 							</div>
 						))
 					}
