@@ -9,17 +9,19 @@ export default {
 			xl: '1440px'
 		},
 		colors: {
-			blue: '#1fb6ff',
-			purple: '#7e5bef',
-			pink: '#ff49db',
-			orange: '#ff7849',
-			green: '#13ce66',
-			yellow: '#ffc82c',
+			sand: '#ecd4b6',
+			viva: '#be3455',
+			pale: '#f0cfc3',
+			air: '#c4ced6',
+			khaki: '#c3b296',
+			white: '#f6f5f7',
+			blue: '#001f3f',
 			'gray-dark': '#273444',
-			gray: '#8492a6',
 			'gray-light': '#d3dce6'
 		},
 		fontFamily: {
+			'zen-antique':['Zen Antique'],
+			body: ['Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', 'sans-serif'],
 			sans: ['Graphik', 'sans-serif'],
 			serif: ['Merriweather', 'serif']
 		},

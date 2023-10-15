@@ -6,14 +6,27 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
 ---
 
 <!doctype html>
-<html lang="ja">
+<html lang="ja" class="h-screen">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.newm {
+				border-radius: 54px;
+				margin: 1.618rem;
+				background: linear-gradient(225deg, #d1bea1, #b0a087);
+				box-shadow:
+					-14px 14px 28px #a69780,
+					14px -14px 28px #e0cdad;
+			}
+		</style>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&display=swap" rel="stylesheet" />
 	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-			<div class="bg-symbol flex h-screen w-screen items-center justify-center bg-no-repeat"></div>
+	<body class="bg-khaki text-viva">
+		<Header />
+		<main class="flex justify-center">
+			<img src="/favicon.svg" class="newm w-4/12" />
 		</main>
 		<Footer />
 	</body>
