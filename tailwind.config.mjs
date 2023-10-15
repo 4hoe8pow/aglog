@@ -18,7 +18,8 @@ export default {
 			blue: '#001f3f',
 		},
 		fontFamily: {
-			'zen-antique':['Zen Antique'],
+			'zen-antique': ['Zen Antique'],
+			young:['Young Serif'],
 			body: ['Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', 'sans-serif'],
 			sans: ['Graphik', 'sans-serif'],
 			serif: ['Merriweather', 'serif']
