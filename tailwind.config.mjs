@@ -15,11 +15,11 @@ export default {
 			air: '#c4ced6',
 			khaki: '#c3b296',
 			white: '#f6f5f7',
-			blue: '#001f3f',
+			blue: '#001f3f'
 		},
 		fontFamily: {
 			'zen-antique': ['Zen Antique'],
-			young:['Young Serif'],
+			young: ['Young Serif'],
 			body: ['Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', 'sans-serif'],
 			sans: ['Graphik', 'sans-serif'],
 			serif: ['Merriweather', 'serif']
@@ -30,10 +30,13 @@ export default {
 				144: '36rem'
 			},
 			borderRadius: {
-				'4xl': '2rem'
+				gakubuti: '54px'
 			},
-			backgroundImage: {
-				symbol: "url('/favicon.svg')"
+			boxShadow: {
+				newm: '-14px 14px 28px #a69780,14px -14px 28px #e0cdad'
+			},
+			colors: {
+				sandGra: 'linear-gradient(225deg, #d1bea1, #b0a087)'
 			}
 		}
 	},

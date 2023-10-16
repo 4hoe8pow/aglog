@@ -1,9 +1,6 @@
 ---
-import BaseHead from '@components/BaseHead.astro'
-import Footer from '@components/Footer.astro'
-import Header from '@components/Header.astro'
-import { SITE_TITLE, SITE_DESCRIPTION } from 'src/consts'
-import { newtClient, type NewtWorkout } from 'src/lib/newt'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { newtClient, type NewtWorkout } from 'src/pages/newt'
 const { items: schedule } = await newtClient.getContents<NewtWorkout>({
 	appUid: 'aglog',
 	modelUid: 'workout',
@@ -13,30 +10,23 @@ const { items: schedule } = await newtClient.getContents<NewtWorkout>({
 })
 ---
 
-<!doctype html>
-<html lang="ja">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="bg-sand">
-		<Header />
-		<main class="max-w-8xl mx-auto grid gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-2">
-			<div class="max-w-2xl">
-				<h2 class="text-gray-900 text-3xl font-bold tracking-tight sm:text-4xl">練習計画</h2>
+<BaseLayout>
+	<main class="max-w-8xl mx-auto grid gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-2">
+		<div class="max-w-2xl">
+			<h2 class="text-gray-900 text-3xl font-bold tracking-tight sm:text-4xl">練習計画</h2>
+		</div>
+		<section>
+			<div class="grid grid-cols-3 gap-3">
+				{
+					schedule.map((workout) => (
+						<div>
+							<span>{workout.date}</span>
+							<span>{workout.title}</span>
+						</div>
+					))
+				}
 			</div>
-			<section>
-				<div class="grid grid-cols-3 gap-3">
-					{
-						schedule.map((workout) => (
-							<div>
-								<span>{workout.date}</span>
-								<span>{workout.title}</span>
-							</div>
-						))
-					}
-				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+		</section>
+	</main>
+</BaseLayout>
+ src/pages/newt
