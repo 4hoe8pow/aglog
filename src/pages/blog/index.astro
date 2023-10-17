@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
-import { newtClient, type NewtArticle } from '../../lib/newt'
+import { newtClient, type NewtArticle } from '@lib/newt';
 import spacetime from 'spacetime'
 
 const { items: articles } = await newtClient.getContents<NewtArticle>({
