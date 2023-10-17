@@ -1,6 +1,6 @@
 ---
-import { newtClient, type NewtArticle } from '../../lib/newt'
 import BaseLayout from '@layouts/BaseLayout.astro'
+import { newtClient, type NewtArticle } from '../../lib/newt'
 
 export const getStaticPaths = async () => {
 	const { items: articles } = await newtClient.getContents<NewtArticle>({

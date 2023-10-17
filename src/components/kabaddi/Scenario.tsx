@@ -1,23 +1,29 @@
 import * as Fiber from '@react-three/fiber'
-import { Scroll, ScrollControls, CameraControls } from '@react-three/drei'
-import Images from './Utils'
-import { useRef } from 'react'
+import { Scroll, ScrollControls, Sky } from '@react-three/drei'
+import { useState } from 'react'
+import Kamishibai from './Kamishibai'
 
 export const SCROLLABLE = 5
-
 export default () => {
-	const cameraControlRef = useRef<CameraControls | null>(null)
 	return (
 		<div className="whitespace-nowrap" style={{ width: '100%', height: '100vh' }}>
-			<Fiber.Canvas>
-				<CameraControls ref={cameraControlRef} makeDefault />
-				<ScrollControls horizontal={false} pages={SCROLLABLE} damping={0.32} enabled>
+			<Fiber.Canvas shadows camera={{ position: [0, 0, 10] }}>
+				<ambientLight intensity={0.03} />
+				<fog attach="fog" args={['#ff5020', 5, 18]} />
+				<spotLight
+					angle={0.14}
+					color="#ffd0d0"
+					penumbra={1}
+					position={[25, 50, -20]}
+					shadow-mapSize={[2048, 2048]}
+					shadow-bias={-0.0001}
+					castShadow
+				/>
+				<Sky sunPosition={[2, 0.4, 10]} />
+
+				<ScrollControls horizontal={false} pages={SCROLLABLE} damping={0.62} enabled>
 					<Scroll>
-						<Images />
-					</Scroll>
-					<Scroll html>
-						<h1 style={{ position: 'absolute', top: '60vh', left: '1.5em' }}>Hi,there.</h1>
-						<h1 style={{ position: 'absolute', top: '140vh', left: '20vw' }}>Jamstack.</h1>
+						<Kamishibai />
 					</Scroll>
 				</ScrollControls>
 			</Fiber.Canvas>

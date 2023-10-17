@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
-import { newtClient, type NewtPlayer } from 'src/pages/newt'
+import { newtClient, type NewtPlayer } from 'src/lib/newt'
 
 const { items: authors } = await newtClient.getContents<NewtPlayer>({
 	appUid: 'aglog',
@@ -40,4 +40,3 @@ authors.sort((first, second) => parseInt(first.uniformNumber, 10) - parseInt(sec
 		</section>
 	</main>
 </BaseLayout>
- src/pages/newt
