@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "src/layouts/BaseLayout.astro";
-import { newtClient, type NewtArticle } from "src/lib/newt";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { newtClient, type NewtArticle } from "@utils/newt";
 
 export const getStaticPaths = async () => {
 	const { items: articles } = await newtClient.getContents<NewtArticle>({
@@ -25,3 +25,4 @@ const { article } = Astro.props
 		<article set:html={article.body} />
 	</main>
 </BaseLayout>
+src/utils/newt

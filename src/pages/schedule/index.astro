@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "src/layouts/BaseLayout.astro";
-import { newtClient, type NewtWorkout } from "src/lib/newt";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { newtClient, type NewtWorkout } from "@utils/newt";
 
 const { items: schedule } = await newtClient.getContents<NewtWorkout>({
 	appUid: 'aglog',
@@ -30,3 +30,4 @@ const { items: schedule } = await newtClient.getContents<NewtWorkout>({
 		</section>
 	</main>
 </BaseLayout>
+ src/utils/newt

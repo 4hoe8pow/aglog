@@ -1,7 +1,7 @@
 ---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { newtClient, type NewtArticle } from '@utils/newt';
 import spacetime from 'spacetime'
-import BaseLayout from 'src/layouts/BaseLayout.astro';
-import { newtClient, type NewtArticle } from 'src/lib/newt';
 
 const { items: articles } = await newtClient.getContents<NewtArticle>({
 	appUid: 'aglog',
@@ -33,3 +33,4 @@ const { items: articles } = await newtClient.getContents<NewtArticle>({
 		</section>
 	</main>
 </BaseLayout>
+ src/utils/newt

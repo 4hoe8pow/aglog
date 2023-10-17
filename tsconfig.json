@@ -1,9 +1,14 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "baseUrl": "C:/Users/Kustham/Desktop/agni/aglog",
-    "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "react"
-  }
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"baseUrl": "C:/Users/Kustham/Desktop/agni/aglog",
+		"paths": {
+			"@components/*": ["src/components/*"],
+			"@layouts/*": ["src/layouts/*"],
+			"@utils/*": ["src/utils/*"]
+		},
+		"esModuleInterop": true,
+		"jsx": "react-jsx",
+		"jsxImportSource": "react"
+	}
 }
