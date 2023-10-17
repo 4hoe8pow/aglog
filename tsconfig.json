@@ -2,11 +2,6 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "baseUrl": "C:/Users/Kustham/Desktop/agni/aglog",
-    "paths": {
-			"@components/*": ["src/components/*"],
-			"@layouts/*": ["src/layouts/*"],
-			"@lib/*": ["src/lib/*"]
-		},
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react"

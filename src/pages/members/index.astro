@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro'
-import { newtClient, type NewtPlayer } from '@lib/newt';
+import BaseLayout from "src/layouts/BaseLayout.astro";
+import { newtClient, type NewtPlayer } from "src/lib/newt";
 
 const { items: authors } = await newtClient.getContents<NewtPlayer>({
 	appUid: 'aglog',
