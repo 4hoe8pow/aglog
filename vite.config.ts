@@ -4,6 +4,11 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
 	plugins: [react()],
+	build: {
+		rollupOptions: {
+			external: ['react', 'react-dom']
+		}
+	},
 	resolve: {
 		alias: {
 			'@pages/': path.join(__dirname, '/src/pages/'),
