@@ -14,22 +14,23 @@ const { items: articles } = await newtClient.getContents<NewtArticle>({
 
 <BaseLayout>
 	<main class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-		<section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-			{
-				articles.map((post) => (
-					<div class="border-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] group flex h-full flex-col rounded-xl border bg-air shadow-sm">
-						<a href={`/blog/${post.slug}/`}>
-							<div class="flex h-52 flex-col items-center justify-center overflow-hidden rounded-t-xl">
-								<img width={720} height={360} src={post.coverImage.src} alt="" />
-							</div>
-							<div class="p-4 md:p-6">
-								<span class=" mb-1 block text-xs font-semibold uppercase">{spacetime(post._sys.createdAt).format('iso-short')}</span>
-								<h3 class=" text-xl font-semibold hover:text-viva">{post.title}</h3>
-							</div>
-						</a>
+		{
+			articles.map((post) => (
+				<a
+					href={`/blog/${post.slug}/`}
+					class="flex flex-col items-center rounded-lg border border-gray-200 bg-white shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:max-w-xl md:flex-row"
+				>
+					<img
+						class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+						src={post.coverImage.src}
+						alt=""
+					/>
+					<div class="flex flex-col justify-between p-4 leading-normal">
+						<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{post.title}</h5>
+						<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{spacetime(post._sys.createdAt).format('iso-short')}</p>
 					</div>
-				))
-			}
-		</section>
+				</a>
+			))
+		}
 	</main>
 </BaseLayout>

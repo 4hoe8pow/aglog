@@ -50,7 +50,6 @@ export interface NewtPlayer {
 
 export interface NewtWorkout {
 	title: string
-	slug: string
-	field: { lat: number; lng: number }
+	note: string
 	date: Date
 }

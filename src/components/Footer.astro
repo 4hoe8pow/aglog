@@ -1,7 +1,23 @@
 ---
+import { X_URL, INSTAGRAM_URL, LINE_URL } from 'src/consts'
 const today = new Date()
 ---
 
 <footer class="p-8 text-center">
-	&copy; {today.getFullYear()} 広島阿國. All rights reserved.
+	<div>&copy; {today.getFullYear()} 広島阿國. All rights reserved.</div>
+
+	<div class="flex items-center justify-center">
+		<a href={X_URL} target="_blank">
+			<span class="sr-only">Follow AGNI on Twitter</span>
+			<img src="/icons/logo-white.png" width="32" height="32" />
+		</a>
+		<a href={INSTAGRAM_URL} target="_blank">
+			<span class="sr-only">Follow AGNI on Instagram</span>
+			<img src="/icons/Instagram_Glyph_Gradient.png" width="32" height="32" />
+		</a>
+		<a href={LINE_URL} target="_blank">
+			<span class="sr-only">Go to Astro's GitHub repo</span>
+			<img src="/icons/LINE_Brand_icon.png" width="32" height="32" />
+		</a>
+	</div>
 </footer>

@@ -1,31 +1,51 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
 import { newtClient, type NewtWorkout } from '@utils/newt.ts'
+import spacetime from 'spacetime'
 
 const { items: schedule } = await newtClient.getContents<NewtWorkout>({
 	appUid: 'aglog',
 	modelUid: 'workout',
 	query: {
-		select: ['title', 'date', 'slug', 'field']
+		select: ['title', 'date', 'note']
 	}
 })
 ---
 
 <BaseLayout>
-	<main class="max-w-8xl mx-auto grid gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-2">
+	<main class="flex h-[62vh] flex-col items-center justify-center">
 		<div class="max-w-2xl">
-			<h2 class="text-gray-900 text-3xl font-bold tracking-tight sm:text-4xl">練習計画</h2>
+			<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">練習計画</h2>
 		</div>
 		<section>
-			<div class="grid grid-cols-3 gap-3">
-				{
-					schedule.map((workout) => (
-						<div>
-							<span>{workout.date}</span>
-							<span>{workout.title}</span>
+			<div class="flex flex-col">
+				<div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+					<div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+						<div class="overflow-hidden">
+							<table class="min-w-full text-left text-sm font-light">
+								<thead class="dark:border-neutral-500 border-b font-medium">
+									<tr>
+										<th scope="col" class="px-6 py-4">日時</th>
+										<th scope="col" class="px-6 py-4">場所</th>
+										<th scope="col" class="px-6 py-4">補足</th>
+									</tr>
+								</thead>
+								<tbody>
+									{
+										schedule.map((workout) => (
+											<tr class="hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600 border-b transition duration-300 ease-in-out">
+												<td class="whitespace-nowrap px-6 py-4">{`${spacetime(workout.date).goto('Japan').format('numeric-cn')}
+													${spacetime(workout.date).goto('Japan').format('time-24')}`}</td>
+												<td class="whitespace-nowrap px-6 py-4">{workout.title}</td>
+												<td class="whitespace-nowrap px-6 py-4">{workout.note}</td>
+											</tr>
+										))
+									}
+								</tbody>
+							</table>
 						</div>
-					))
-				}
+					</div>
+				</div>
 			</div>
 		</section>
 	</main>
