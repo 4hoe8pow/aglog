@@ -13,14 +13,14 @@ authors.sort((first, second) => parseInt(first.uniformNumber, 10) - parseInt(sec
 ---
 
 <BaseLayout>
-	<main class="max-w-8xl mx-auto grid h-[62vh] items-center gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-2">
+	<section class="max-w-8xl mx-auto grid items-center gap-x-8 gap-y-20 p-16 px-6 lg:px-8 xl:grid-cols-2">
 		<div class="max-w-2xl">
 			<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">AGNI KABADDISTS</h2>
 			<p class="mt-6 text-lg leading-8 text-gray-600">
 				カバディは道具を必要とせず、体のみで闘うシンプルなコンタクトスポーツです。広島阿國の練習は、一般体験者を随時受け付けています。「メンバーとして加入したい」等ではなく、一度やってみたいという気持ちがもしある方はご連絡ください。心よりお持ちしております。
 			</p>
 		</div>
-		<section>
+		<div>
 			<ul role="list" class="grid gap-x-12 gap-y-12 sm:grid-cols-3 sm:gap-y-20 xl:col-span-2">
 				{
 					authors.map((player) => (
@@ -36,6 +36,6 @@ authors.sort((first, second) => parseInt(first.uniformNumber, 10) - parseInt(sec
 					))
 				}
 			</ul>
-		</section>
-	</main>
+		</div>
+	</section>
 </BaseLayout>

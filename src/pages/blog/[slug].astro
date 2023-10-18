@@ -20,8 +20,8 @@ const { article } = Astro.props
 ---
 
 <BaseLayout>
-	<main>
+	<section>
 		<h2>{article.title}</h2>
 		<article set:html={article.body} />
-	</main>
+	</section>
 </BaseLayout>

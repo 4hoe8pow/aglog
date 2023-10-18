@@ -13,7 +13,7 @@ const { items: articles } = await newtClient.getContents<NewtArticle>({
 ---
 
 <BaseLayout>
-	<main class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+	<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
 		{
 			articles.map((post) => (
 				<a
@@ -32,5 +32,5 @@ const { items: articles } = await newtClient.getContents<NewtArticle>({
 				</a>
 			))
 		}
-	</main>
+	</section>
 </BaseLayout>
