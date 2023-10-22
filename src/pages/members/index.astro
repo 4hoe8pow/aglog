@@ -5,11 +5,10 @@ const { items: authors } = await newtClient.getContents<NewtPlayer>({
 	appUid: 'aglog',
 	modelUid: 'player',
 	query: {
-		select: ['fullName', 'uniformNumber', 'biography', 'profileImage']
+		select: ['fullName', 'uniformNumber', 'biography', 'profileImage'],
+		order: ['uniformNumber']
 	}
 })
-// 背番号順にソート
-authors.sort((first, second) => parseInt(first.uniformNumber, 10) - parseInt(second.uniformNumber, 10))
 ---
 
 <BaseLayout>

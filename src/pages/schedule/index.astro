@@ -7,45 +7,41 @@ const { items: schedule } = await newtClient.getContents<NewtWorkout>({
 	appUid: 'aglog',
 	modelUid: 'workout',
 	query: {
-		select: ['title', 'date', 'note']
+		select: ['title', 'date', 'note'],
+		order: ['date'],
+		date: { gte: spacetime(new Date()).format('iso') }
 	}
 })
 ---
 
 <BaseLayout>
-	<section class="flex h-[62vh] flex-col items-center justify-center">
+	<section class="flex h-[62vh] flex-col items-center justify-center gap-y-12">
 		<div class="max-w-2xl">
 			<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">練習計画</h2>
 		</div>
-		<div>
-			<div class="flex flex-col">
-				<div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-					<div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-						<div class="overflow-hidden">
-							<table class="min-w-full text-left text-sm font-light">
-								<thead class="dark:border-neutral-500 border-b font-medium">
-									<tr>
-										<th scope="col" class="px-6 py-4">日時</th>
-										<th scope="col" class="px-6 py-4">場所</th>
-										<th scope="col" class="px-6 py-4">補足</th>
-									</tr>
-								</thead>
-								<tbody>
-									{
-										schedule.map((workout) => (
-											<tr class="hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600 border-b transition duration-300 ease-in-out">
-												<td class="whitespace-nowrap px-6 py-4">{`${spacetime(workout.date).goto('Japan').format('numeric-cn')}
+		<div class="w-gold">
+			<div class="relative overflow-x-auto">
+				<table class="w-full text-left text-sm text-gray-500 dark:text-gray-400">
+					<thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+						<tr>
+							<th scope="col" class="px-6 py-4">日時</th>
+							<th scope="col" class="px-6 py-4">場所</th>
+							<th scope="col" class="px-6 py-4">補足</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							schedule.map((workout) => (
+								<tr class="hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600 border-b transition duration-300 ease-in-out">
+									<td class="whitespace-nowrap px-6 py-4">{`${spacetime(workout.date).goto('Japan').format('numeric-cn')}
 													${spacetime(workout.date).goto('Japan').format('time-24')}`}</td>
-												<td class="whitespace-nowrap px-6 py-4">{workout.title}</td>
-												<td class="whitespace-nowrap px-6 py-4">{workout.note}</td>
-											</tr>
-										))
-									}
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
+									<td class="whitespace-nowrap px-6 py-4">{workout.title}</td>
+									<td class="whitespace-nowrap px-6 py-4">{workout.note}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</section>
