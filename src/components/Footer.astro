@@ -4,20 +4,22 @@ const today = new Date()
 ---
 
 <footer class="sticky top-[100vh] p-8 text-center">
-	<div>&copy; {today.getFullYear()} 広島阿國. All rights reserved.</div>
+	<div class="flex flex-col items-center justify-center gap-y-6">
+		<div>&copy; {today.getFullYear()} 広島阿國. All rights reserved.</div>
 
-	<div class="flex items-center justify-center">
-		<a href={X_URL} target="_blank">
-			<span class="sr-only">Follow AGNI on Twitter</span>
-			<img src="/icons/logo-white.png" width="32" height="32" />
-		</a>
-		<a href={INSTAGRAM_URL} target="_blank">
-			<span class="sr-only">Follow AGNI on Instagram</span>
-			<img src="/icons/Instagram_Glyph_Gradient.png" width="32" height="32" />
-		</a>
-		<a href={LINE_URL} target="_blank">
-			<span class="sr-only">Go to Astro's GitHub repo</span>
-			<img src="/icons/LINE_Brand_icon.png" width="32" height="32" />
-		</a>
+		<div class="flex w-[62vw] items-center justify-center gap-6">
+			<a href={X_URL} target="_blank">
+				<span class="sr-only">Follow AGNI on Twitter</span>
+				<img src="/icons/logo-black.png" width="32" height="32" />
+			</a>
+			<a href={INSTAGRAM_URL} target="_blank">
+				<span class="sr-only">Follow AGNI on Instagram</span>
+				<img src="/icons/Instagram_Glyph_Gradient.png" width="32" height="32" />
+			</a>
+			<a href={LINE_URL} target="_blank">
+				<span class="sr-only">Go to Astro's GitHub repo</span>
+				<img src="/icons/LINE_Brand_icon.png" width="32" height="32" />
+			</a>
+		</div>
 	</div>
 </footer>
