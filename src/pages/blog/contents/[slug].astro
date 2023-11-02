@@ -21,7 +21,44 @@ const { article } = Astro.props
 
 <BaseLayout>
 	<section>
-		<h2>{article.title}</h2>
-		<article set:html={article.body} />
+		<style is:global>
+			.main {
+				padding: 2rem;
+			}
+			h1 {
+				padding: 1rem 2rem;
+				border-left: 5px solid #be3455;
+				background: #f4f4f4;
+			}
+			article {
+				padding: 1rem;
+			}
+			table {
+				margin: auto;
+			}
+			table,
+			th,
+			td {
+				border-collapse: collapse;
+				border: 1px solid #000;
+			}
+			td {
+				padding: 0.38rem;
+			}
+			h2 {
+				background-color: #be3455;
+				color: #fff;
+				margin: 1rem auto;
+				text-align: center;
+				width: 38vw;
+			}
+			ul {
+				text-align: center;
+			}
+		</style>
+		<div class="main">
+			<h1>{article.title}</h1>
+			<article set:html={article.body} />
+		</div>
 	</section>
 </BaseLayout>
