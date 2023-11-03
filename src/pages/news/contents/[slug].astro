@@ -35,25 +35,42 @@ const { article } = Astro.props
 			}
 			table {
 				margin: auto;
+				margin-top: 1rem;
+				width: 38%;
 			}
-			table,
 			th,
 			td {
 				border-collapse: collapse;
-				border: 1px solid #000;
+				border-bottom: 1px solid #be3455;
+			}
+			th {
+				color: #be3455;
 			}
 			td {
-				padding: 0.38rem;
+				padding: 0.62rem;
 			}
 			h2 {
 				background-color: #be3455;
 				color: #fff;
-				margin: 1rem auto;
+				margin: 1rem 0;
 				text-align: center;
 				width: 38vw;
 			}
 			ul {
-				text-align: center;
+				margin: auto;
+				border-radius: 5px;
+				width: 38%;
+			}
+			li {
+				padding: 0.62rem 0;
+				margin: 5px 0px;
+				border-bottom: 1px dashed #be3455;
+			}
+			ul li {
+				padding-left: 1.6rem;
+			}
+			ul li:before {
+				padding: 1rem;
 			}
 		</style>
 		<div class="main">
