@@ -1,11 +1,14 @@
 ---
-import Scenario from '@components/kabaddi/Scenario'
+import AttractSymbol from '@components/symbol/AttractSymbol.astro'
 import BaseLayout from '@layouts/BaseLayout.astro'
 ---
 
 <BaseLayout>
-	<section class="flex h-[72vh] justify-center">
-		<img src="/favicon.svg" class="" />
-	</section>
-	{/* <Scenario client:only="react" /> */}
+	<div class="relative h-[72vh] w-full">
+		<div class="absolute left-0 top-0 -z-10 h-[45vh] w-full bg-viva">
+		</div>
+		<div class="relative flex h-[72vh] justify-center">
+			<img src="/favicon.svg" />
+		</div>
+	</div>
 </BaseLayout>
