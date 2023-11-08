@@ -5,9 +5,9 @@ interface Props {
 	image?: string
 }
 
-const { title, description, image = '/news-placeholder-1.jpg' } = Astro.props
-const canonicalURL = new URL(Astro.url.pathname, "https://www.agni.ninja");
-const ogpImageURL = new URL('/agni.jpg', canonicalURL);
+const { title, description } = Astro.props
+const canonicalURL = new URL(Astro.url.pathname, 'https://www.agni.ninja')
+const ogpImageURL = new URL('/agni.jpg', canonicalURL)
 ---
 
 <!-- Global Metadata -->
@@ -15,6 +15,7 @@ const ogpImageURL = new URL('/agni.jpg', canonicalURL);
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+<link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
