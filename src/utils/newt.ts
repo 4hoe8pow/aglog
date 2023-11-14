@@ -45,7 +45,8 @@ export interface NewtPlayer {
 		altText: string
 		description: string
 		metadata: {}
-	}
+	},
+	local: string
 }
 
 export interface NewtWorkout {
