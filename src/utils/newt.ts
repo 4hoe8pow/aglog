@@ -13,7 +13,6 @@ export interface NewtArticle {
 	}
 	title: string
 	slug: string
-	body: string
 	coverImage: {
 		_id: string
 		src: string
@@ -27,6 +26,7 @@ export interface NewtArticle {
 		description: string
 		metadata: {}
 	}
+	mainbody: string
 }
 
 export interface NewtPlayer {
@@ -45,7 +45,7 @@ export interface NewtPlayer {
 		altText: string
 		description: string
 		metadata: {}
-	},
+	}
 	local: string
 }
 

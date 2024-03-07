@@ -9,7 +9,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 		appUid: 'aglog',
 		modelUid: 'article',
 		query: {
-			select: ['title', 'slug', 'body', 'coverImage', '_sys'],
+			select: ['title', 'slug', 'mainbody', 'coverImage', '_sys'],
 			order: ['-_sys.createdAt']
 		}
 	})
